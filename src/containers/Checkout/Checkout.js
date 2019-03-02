@@ -16,8 +16,8 @@ class Checkout extends Component {
   };
 
   // static getDerivedStateFromProps(props, state) {
-  //   componentDidMount() {
-  componentWillMount() {
+  componentDidMount() {
+    //   componentWillMount() {
     const query = new URLSearchParams(this.props.location.search);
     const ingredients = {};
     let price = 0;
