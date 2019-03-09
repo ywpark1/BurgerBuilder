@@ -49,8 +49,8 @@ export const authActions = {
         console.log(res);
         dispatch(authActions.authSuccess(res.data.idToken, res.data.localId));
       } catch (error) {
-        console.log('[Auth] ', error.response.data.error.message);
-        dispatch(authActions.authFail(error.response));
+        // console.log('[Auth] ', error.response.data.error.message);
+        dispatch(authActions.authFail(error.response.data.error));
       }
     };
   }
