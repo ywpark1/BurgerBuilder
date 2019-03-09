@@ -7,6 +7,23 @@ export const authActions = {
       type: authActionTypes.AUTH_START
     };
   },
+  authStatus: () => {
+    return {
+      type: authActionTypes.AUTH_STATUS
+    };
+  },
+  logout: () => {
+    return {
+      type: authActionTypes.AUTH_LOGOUT
+    };
+  },
+  checkAuthTimeout: expirationTime => {
+    return dispatch => {
+      setTimeout(() => {
+        dispatch(authActions.logout());
+      }, expirationTime * 1000);
+    };
+  },
 
   authSuccess: (idToken, localId) => {
     return {
@@ -48,10 +65,17 @@ export const authActions = {
         const res = await axios.post(url, authData);
         console.log(res);
         dispatch(authActions.authSuccess(res.data.idToken, res.data.localId));
+        dispatch(authActions.checkAuthTimeout(res.data.expiresIn));
       } catch (error) {
         // console.log('[Auth] ', error.response.data.error.message);
         dispatch(authActions.authFail(error.response.data.error));
       }
+    };
+  },
+  setAuthRedirectPath: path => {
+    return {
+      type: authActionTypes.SET_AUTH_REDIRECT_PATH,
+      path: path
     };
   }
 };
