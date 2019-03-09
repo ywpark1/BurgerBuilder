@@ -13,3 +13,9 @@ export const ActionTypes = {
   FETCH_ORDERS_SUCCESS: 'FETCH_ORDERS_SUCCESS',
   FETCH_ORDERS_FAIL: 'FETCH_ORDERS_FAIL'
 };
+
+export const authActionTypes = {
+  AUTH_START: 'AUTH_START',
+  AUTH_SUCCESS: 'AUTH_SUCCESS',
+  AUTH_FAIL: 'AUTH_FAIL'
+};
