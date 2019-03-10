@@ -6,8 +6,6 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-// import { orderActions } from '../../store/actions/order';
-
 class Checkout extends Component {
   //   state = {
   //     ingredients: {
